@@ -18,9 +18,18 @@
         userProfileTemplate = Handlebars.compile(userProfileSource),
         userProfilePlaceholder = document.getElementById('user-profile');
 
-    var oauthSource = document.getElementById('oauth-template').innerHTML,
-        oauthTemplate = Handlebars.compile(oauthSource),
-        oauthPlaceholder = document.getElementById('oauth');
+
+    function getArtists() {
+      $.ajax({
+        url: `https://api.spotify.com/v1/me/top/tracks?limit=10&time_range=${timeRangeSlug}`,
+        headers: {
+          Authorization: "Bearer " + access_token,
+        },
+        success: function (response) {
+          
+        }
+      });
+    }
 
     var params = getHashParams();
 
@@ -33,10 +42,7 @@
     } else {
       if (access_token) {
         // render oauth info
-        oauthPlaceholder.innerHTML = oauthTemplate({
-          access_token: access_token,
-          refresh_token: refresh_token
-        });
+        
 
         $.ajax({
             url: 'https://api.spotify.com/v1/me',
@@ -56,19 +62,7 @@
           $('#loggedin').hide();
       }
 
-      document.getElementById('obtain-new-token').addEventListener('click', function() {
-        $.ajax({
-          url: '/refresh_token',
-          data: {
-            'refresh_token': refresh_token
-          }
-        }).done(function(data) {
-          access_token = data.access_token;
-          oauthPlaceholder.innerHTML = oauthTemplate({
-            access_token: access_token,
-            refresh_token: refresh_token
-          });
-        });
-      }, false);
+
+      
     }
   })();

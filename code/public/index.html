@@ -19,15 +19,34 @@
   </head>
 
   <body>
-    <div class="container h-screen bg-gradient-to-b-css from-slate-700-css to-slate-900-css">
+    <div class="container max-w-screen-2xl h-screen bg-gradient-to-b-css from-slate-700-css to-slate-900-css">
       <div id="login">
 
-        <div class="login-body flex flex-col justify-center items-center text-center h-screen">
-          <div class="hero flex flex-col relative bottom-6">
-            <h1 class="circlefy text-5xl italic">circlefy</h1>
-            <a href="/login" class="generate text-white text-3xl">Generate</a>
-          </div>
+        <div class="login-body flex flex-col items-center">
+          <div class="hero flex flex-col h-screen items-center justify-center">
+            <div class="logo">
+              <div class="desktop">
+                <h1 class="circlefy-desktop italic text-center">circlefy</h1>
+              </div>
+              <div class="mobile mobile-circlefy">
+                <h1 class="circlefy italic text-center">circlefy</h1>
+                <h1 class="circlefy italic text-center">circlefy</h1>
+                <h1 class="circlefy italic text-center">circlefy</h1>
+                <h1 class="circlefy italic text-center">circlefy</h1>
+                <h1 class="circlefy italic text-center">circlefy</h1>
+                <h1 class="circlefy italic text-center">circlefy</h1>
+                <h1 class="circlefy italic text-center">circlefy</h1>
+                <h1 class="circlefy italic text-center">circlefy</h1>
+                <h1 class="circlefy italic text-center">circlefy</h1>
+                <h1 class="circlefy italic text-center">circlefy</h1>
+              </div>
+            </div>
+            <div class="generate border border-green-500 hover:cursor-pointer hover:bg-green-500 transition duration-200 text-center flex justify-center items-center">
+              <a href="/login"><h2 class="text-white  text-2xl ">Generate</h2></a>
+            </div>
 
+
+          </div>
           <footer class="absolute bottom-10 text-green-500">
             <a href="#">Home</a>
             <span>|</span>
@@ -36,6 +55,7 @@
             <a href="#">Privacy Policy</a>
             <span>|</span>
             <a href="#">Contact</a>
+            <span>|</span>
           </footer>
         </div>
         
@@ -43,39 +63,23 @@
       <div id="loggedin">
         <div id="user-profile">
         </div>
-        <div id="oauth">
-        </div>
-        <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
+
+        <div id="artists-profile"></div>
       </div>
     </div>
 
     <script id="user-profile-template" type="text/x-handlebars-template">
-      <h1>Logged in as {{display_name}}</h1>
+      <h1 class="text-white">{{display_name}}</h1>
       <div class="media">
         <div class="pull-left">
-          <img class="media-object" width="150" src="{{images.0.url}}" />
-        </div>
-        <div class="media-body">
-          <dl class="dl-horizontal">
-            <dt>Display name</dt><dd class="clearfix">{{display_name}}</dd>
-            <dt>Id</dt><dd>{{id}}</dd>
-            <dt>Email</dt><dd>{{email}}</dd>
-            <dt>Spotify URI</dt><dd><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></dd>
-            <dt>Link</dt><dd><a href="{{href}}">{{href}}</a></dd>
-            <dt>Profile Image</dt><dd class="clearfix"><a href="{{images.0.url}}">{{images.0.url}}</a></dd>
-            <dt>Country</dt><dd>{{country}}</dd>
-          </dl>
+          <img class="media-object centre-image" width="100" src="{{images.0.url}}" />
         </div>
       </div>
+
+
+      <!-- <h2>{{items.0.name}}</h2> -->
     </script>
 
-    <script id="oauth-template" type="text/x-handlebars-template">
-      <h2>oAuth info</h2>
-      <dl class="dl-horizontal">
-        <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
-        <dt>Refresh token</dt><dd class="text-overflow">{{refresh_token}}</dd>
-      </dl>
-    </script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
