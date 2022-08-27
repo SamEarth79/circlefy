@@ -62,25 +62,14 @@
         </div>
       </div>
       <div id="loggedin">
-        <div id="user-profile"></div>
-
         <div id="artists-profile" class="bg-white h-max"></div>
       </div>
     </div>
 
-    <script id="user-profile-template" type="text/x-handlebars-template">
-      <h1 class="text-white">{{display_name}}</h1>
-      <div class="media">
-        <div class="pull-left">
-          <img class="media-object round centre-image" src="{{images.0.url}}" />
-        </div>
-        <!-- <h2>username</h2>
-        <h2>{{username}}</h2> -->
-      </div>
-    </script>
 
     <script id="artists-profile-template" type="text/x-handlebars-template">
-      <h1>Artists</h1>
+      <!-- <h1>Artists</h1> -->
+      <img class="media-object round centre-image" src="{{userResponse.images.0.url}}" />
       <!-- <h2>{{items.0.name}}</h2> -->
       <ul class="circle-1" id="circle-1">
       </ul>

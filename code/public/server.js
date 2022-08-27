@@ -4,6 +4,8 @@
      * Obtains parameters from the hash of the URL
      * @return Object
      */
+    var userResponse;
+
     function getHashParams() {
       var hashParams = {};
       var e, r = /([^&;=]+)=?([^&;]*)/g,
@@ -14,9 +16,9 @@
       return hashParams;
     }
 
-    var userProfileSource = document.getElementById('user-profile-template').innerHTML,
-        userProfileTemplate = Handlebars.compile(userProfileSource),
-        userProfilePlaceholder = document.getElementById('user-profile');
+    // var userProfileSource = document.getElementById('user-profile-template').innerHTML,
+    //     userProfileTemplate = Handlebars.compile(userProfileSource),
+    //     userProfilePlaceholder = document.getElementById('user-profile');
     
     var artistsProfileSource = document.getElementById('artists-profile-template').innerHTML,
         artistsProfileTemplate = Handlebars.compile(artistsProfileSource),
@@ -118,7 +120,11 @@
           Authorization: "Bearer " + access_token,
         },
         success: function (response) {
-          artistsProfilePlaceholder.innerHTML = artistsProfileTemplate(response);
+          let allResponse = {
+            artistResponse: response,
+            userResponse: userResponse
+          };
+          artistsProfilePlaceholder.innerHTML = artistsProfileTemplate(allResponse);
           $('#login').hide();
           $('#loggedin').show();
 
@@ -152,7 +158,8 @@
               'Authorization': 'Bearer ' + access_token
             },
             success: function(response) {
-              userProfilePlaceholder.innerHTML = userProfileTemplate(response);
+              userResponse=response;
+              // userProfilePlaceholder.innerHTML = userProfileTemplate(response);
               
               // let user = {
               //   username: "Spotify"
