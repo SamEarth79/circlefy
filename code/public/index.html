@@ -57,30 +57,55 @@
             <a href="#">Privacy Policy</a>
             <span>|</span>
             <a href="#">Contact</a>
-            <span>|</span>
           </footer>
         </div>
       </div>
       <div id="loggedin">
-        <div id="artists-profile" class="bg-white h-max"></div>
+        <div class="circle-container">
+          <div id="artists-profile"></div>
+
+          <div class="download-btn absolute bottom-16">
+            <button id="download" class="bg-green-500 px-4 py-3 rounded-full hover:-translate-y-1 transition">Download</button>
+          </div>
+        </div>
+
+        
+
+        <div class="footer-container flex justify-center">
+          <footer class="absolute bottom-6 text-green-500">
+            <a href="#">Home</a>
+            <span>|</span>
+            <a href="#">About</a>
+            <span>|</span>
+            <a href="#">Privacy Policy</a>
+            <span>|</span>
+            <a href="#">Contact</a>
+          </footer>
+        </div>
       </div>
     </div>
 
 
     <script id="artists-profile-template" type="text/x-handlebars-template">
       <!-- <h1>Artists</h1> -->
-      <img class="media-object round centre-image" src="{{userResponse.images.0.url}}" />
-      <!-- <h2>{{items.0.name}}</h2> -->
-      <ul class="circle-1" id="circle-1">
-      </ul>
+      <div class="artistContainer" id="artistContainer">
+        <img class="media-object round centre-image" src="{{userResponse.images.0.url}}" />
+        <!-- <h2>{{items.0.name}}</h2> -->
+        <ul class="circle-1" id="circle-1">
+        </ul>
 
-      <ul class="circle-2" id="circle-2">
-      </ul>
+        <ul class="circle-2" id="circle-2">
+        </ul>
+
+      </div>
 
     </script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="dom-to-image.min.js"></script>
+		<script src="FileSaver.min.js"></script>
     <script src="./server.js" defer></script>
   </body>
 </html>

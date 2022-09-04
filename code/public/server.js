@@ -5,6 +5,9 @@
      * @return Object
      */
     var userResponse;
+    const isMobile = window.matchMedia('(max-width: 800px)')
+
+    
 
     function getHashParams() {
       var hashParams = {};
@@ -24,27 +27,98 @@
         artistsProfileTemplate = Handlebars.compile(artistsProfileSource),
         artistsProfilePlaceholder = document.getElementById('artists-profile');
 
+    function hiddenClone(element) {
+      // Create clone of element
+      console.log(element);
+      const clone = element.cloneNode(true);
+      console.log(clone);
+  
+      // Position element relatively within the
+      // body but still out of the viewport
+      // var style = clone.style;
+      // style.position = "relative";
+      // style.top = window.innerHeight + "px";
+      // style.left = 0;
+      // Append clone to body and return the clone
+      document.body.appendChild(clone);
+      return clone;
+    }
+
+    function downloadImg() {
+      var fileName="circlefy";
+      // var offScreen = document.querySelector(".artistContainer");
+      var offScreen = document.getElementById("artists-profile");
+      window.scrollTo(0, 0);
+      var clone = hiddenClone(offScreen);
+      console.log("clone created")
+      // Use clone with htm2canvas and delete clone
+      html2canvas(offScreen, {
+         useCors: true
+        }).then((canvas) => {
+        document.body.appendChild(canvas)
+        var dataURL = canvas.toDataURL("image/png", 1.0);
+        console.log(dataURL);
+        document.body.removeChild(clone);
+        var link = document.createElement("a");
+        link.href = dataURL;
+        link.download = `${fileName}.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+    }
+
+    function downloadImgOwn(fileName){
+      const imgHTML = document.querySelector("#artists-profile");
+      console.log(imgHTML);
+      html2canvas(imgHTML, {
+          useCORS: true,
+      }).then(canvas => {
+          document.body.appendChild(canvas)
+          var dataURL = canvas.toDataURL("image/jpeg");
+          console.log(dataURL)
+          var link = document.createElement("a");
+          link.href = dataURL;
+          link.download = `${fileName}.jpeg`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+      });
+    }
+
+
     function setCircleStyles(artistsProfile, response){
 
-      let circle1, circle2;
+      let centre, circle1, circle2;
+      const centre_size = isMobile.matches ? 6 : 8;
+
       const circle1_count = 8;
-      const circle1_size = 80;
-      const circle1_radius = "8em";
+      const circle1_size = isMobile.matches ? 60 : 80;
+      const circle1_radius = isMobile.matches ? "5.5em" : "8em";
       let circle1_rot = 290;
       const circle1_angle = 360/circle1_count;
       
-      const circle2_count = 18;
-      const circle2_size = 70;
-      const circle2_radius = "13.5em";
+      const circle2_count = isMobile.matches ? 16 : 18;
+      const circle2_size = isMobile.matches ? 60 : 70;
+      const circle2_radius = isMobile.matches ? "10em" : "13.5em";
       let circle2_rot = 100;
       const circle2_angle = 360/circle2_count;
       
+      let containerWidth = isMobile.matches ? "30" : "34";
+      let containerHeight = isMobile.matches ? "30" : "34";
+
+      centre = document.querySelector(".centre-image");
+      centre.style = 
+      "margin: "+centre_size/(-2)+"em;"
+      +"width: "+centre_size+"em;"
+      +"height: "+centre_size+"em;"
+
       // console.log(artistsProfile.children);
-      for(let i=0; i<artistsProfile.children.length; i++)
+      for(let i=0; i<artistsProfile.children[0].children.length; i++)
       {
-        if(artistsProfile.children[i].classList[0]==="circle-1")
+        if(artistsProfile.children[0].children[i].classList[0]==="circle-1")
         {
-          circle1 = artistsProfile.children[i];
+          circle1 = artistsProfile.children[0].children[i];
           break;
         }
       }
@@ -56,7 +130,7 @@
         img.classList.add("media-object");
         img.classList.add("round");
         img.classList.add("circle-1-image");
-        console.log(response["items"][0]["images"][0]["url"]);
+        // console.log(response["items"][0]["images"][0]["url"]);
         img.src=response["items"][i]["images"][0]["url"];
         li.appendChild(img);
         circle1.appendChild(li);
@@ -75,11 +149,11 @@
       }
 
 
-      for(let i=0; i<artistsProfile.children.length; i++)
+      for(let i=0; i<artistsProfile.children[0].children.length; i++)
       {
-        if(artistsProfile.children[i].classList[0]==="circle-2")
+        if(artistsProfile.children[0].children[i].classList[0]==="circle-2")
         {
-          circle2 = artistsProfile.children[i];
+          circle2 = artistsProfile.children[0].children[i];
           break;
         }
       }
@@ -104,13 +178,13 @@
         circle.children[0].style = "transform: rotate(calc("+ circle2_rot +" * 1deg)) translate("+ circle2_radius +") rotate(calc("+ circle2_rot +" * -1deg));"
         +"width: "+ circle2_size+"px;"
         +"height: "+ circle2_size+"px;"
-        +"margin: "+ circle2_size/(-2)+"px;"
+        +"margin: "+ circle2_size/(-2) +"px;"
         ;
         circle2_rot+=circle2_angle;
       }
-
-      
-        // console.log("");
+      artistsProfile.style = 
+        "width: "+containerWidth+"em;"+
+        "height: "+containerHeight+"em;"      
     }
 
     function getArtists() {
@@ -131,6 +205,8 @@
           const artistsProfile = document.getElementById("artists-profile");
           // console.log(artistsProfile);
           setCircleStyles(artistsProfile, response);
+
+          document.getElementById("download").addEventListener("click", ()=> downloadImgOwn("circlefy"));
 
         }
       });
