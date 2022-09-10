@@ -7,7 +7,40 @@
     var userResponse;
     const isMobile = window.matchMedia('(max-width: 800px)')
 
-    
+    const tagsbtn = document.getElementById("tags");
+    tagsbtn.addEventListener("click", toggleTags);
+    function toggleTags(){
+      const t1 = document.querySelector(".tags-1");
+      const t2 = document.querySelector(".tags-2");
+      t1.classList.toggle("hide");
+      t2.classList.toggle("hide");
+    }
+
+    colorPicker = document.getElementById("bg-color");
+    colorPicker.addEventListener("input", updateFirst, false);
+    colorPicker.addEventListener("change", watchColorPicker, false);
+
+    function updateFirst(event) {
+      let container = document.getElementById("artists-profile");
+      let containerWidth = isMobile.matches ? "30" : "34";
+      let containerHeight = isMobile.matches ? "30" : "34";
+
+      if (container) {
+        container.style ="background-color :"+event.target.value+";"
+                      +"width: "+containerWidth+"em;"+
+                      "height: "+containerHeight+"em;";   
+      }
+    }
+
+    function watchColorPicker(event) {
+      let containerWidth = isMobile.matches ? "30" : "34";
+      let containerHeight = isMobile.matches ? "30" : "34";
+
+      let container = document.getElementById("artists-profile");
+      container.style ="background-color :"+event.target.value+";"
+                      +"width: "+containerWidth+"em;"+
+                      "height: "+containerHeight+"em;";   
+    }
 
     function getHashParams() {
       var hashParams = {};
@@ -49,15 +82,13 @@
       // var offScreen = document.querySelector(".artistContainer");
       var offScreen = document.getElementById("artists-profile");
       window.scrollTo(0, 0);
-      var clone = hiddenClone(offScreen);
-      console.log("clone created")
       // Use clone with htm2canvas and delete clone
       html2canvas(offScreen, {
          useCors: true
         }).then((canvas) => {
         document.body.appendChild(canvas)
         var dataURL = canvas.toDataURL("image/png", 1.0);
-        console.log(dataURL);
+        // console.log(dataURL);
         document.body.removeChild(clone);
         var link = document.createElement("a");
         link.href = dataURL;
@@ -93,19 +124,20 @@
       const centre_size = isMobile.matches ? 6 : 8;
 
       const circle1_count = 8;
-      const circle1_size = isMobile.matches ? 60 : 80;
-      const circle1_radius = isMobile.matches ? "5.5em" : "8em";
+      const circle1_size = isMobile.matches ? 65 : 80;
+      const circle1_radius = isMobile.matches ? "6.5em" : "8em";
       let circle1_rot = 290;
       const circle1_angle = 360/circle1_count;
       
       const circle2_count = isMobile.matches ? 16 : 18;
       const circle2_size = isMobile.matches ? 60 : 70;
-      const circle2_radius = isMobile.matches ? "10em" : "13.5em";
+      const circle2_radius = isMobile.matches ? "11em" : "13.5em";
       let circle2_rot = 100;
       const circle2_angle = 360/circle2_count;
       
-      let containerWidth = isMobile.matches ? "30" : "34";
-      let containerHeight = isMobile.matches ? "30" : "34";
+      //Another instance of the below code is in UpdateFirst and WatchColorPicker functions 
+      let containerWidth = isMobile.matches ? "28" : "34";
+      let containerHeight = isMobile.matches ? "28" : "34";
 
       centre = document.querySelector(".centre-image");
       centre.style = 
@@ -148,6 +180,40 @@
         circle1_rot+=circle1_angle;
       }
 
+      let circle1_tags;
+
+      for(let i=0; i<artistsProfile.children[0].children.length; i++)
+      {
+        if(artistsProfile.children[0].children[i].classList[0]==="tags-1")
+        {
+          circle1_tags = artistsProfile.children[0].children[i];
+          break;
+        }
+      }
+      
+      for(let i=0;i<circle1_count;i++)
+      {
+        let li = document.createElement("li");
+        li.innerHTML = response["items"][i]["name"];
+        circle1_tags.appendChild(li);
+      }
+      
+      tag1_rot=290;
+      tag_size = isMobile.matches ? "10" : "12";
+      tag1_radius=isMobile.matches ? "10em" : "11em";
+      for(let i=0; i<circle1_tags.children.length; i++)
+      {
+        let tag = circle1_tags.children[i];
+        console.log(tag);
+        tag.style = "transform: rotate(calc("+ tag1_rot +" * 1deg)) translate("+ tag1_radius +") rotate(calc("+ tag1_rot +" * -1deg));"
+        +"font-size: "+ tag_size +"px;"
+        // +"height: "+ 3+"em;"
+        +"margin-left: -"+ tag_size+"px;"
+        +"margin-top: "+ tag_size*1.5+"px;"
+        ;
+        tag1_rot+=circle1_angle;
+      }
+
 
       for(let i=0; i<artistsProfile.children[0].children.length; i++)
       {
@@ -158,7 +224,7 @@
         }
       }
 
-      for(let i=8;i<circle2_count+8;i++)
+      for(let i=circle1_count;i<circle2_count+8;i++)
       {
         let li = document.createElement("li");
         let img = document.createElement("img");
@@ -182,9 +248,46 @@
         ;
         circle2_rot+=circle2_angle;
       }
+
+      let circle2_tags;
+
+      for(let i=0; i<artistsProfile.children[0].children.length; i++)
+      {
+        if(artistsProfile.children[0].children[i].classList[0]==="tags-2")
+        {
+          circle2_tags = artistsProfile.children[0].children[i];
+          break;
+        }
+      }
+      
+      for(let i=circle1_count;i<circle2_count+8;i++)
+      {
+        let li = document.createElement("li");
+        li.innerHTML = response["items"][i]["name"];
+        circle2_tags.appendChild(li);
+      }
+      
+      tag2_rot=100;
+      tag2_radius=isMobile.matches ? "17em" : "17.5em";
+      for(let i=0; i<circle2_tags.children.length; i++)
+      {
+        let tag = circle2_tags.children[i];
+        console.log(tag);
+        tag.style = "transform: rotate(calc("+ tag2_rot +" * 1deg)) translate("+ tag2_radius +") rotate(calc("+ tag2_rot +" * -1deg));"
+        +"font-size: "+ tag_size +"px;"
+        // +"height: "+ 3+"em;"
+        +"margin-left: -"+ tag_size+"px;"
+        +"margin-top: "+ tag_size*1.5+"px;"
+        ;
+        tag2_rot+=circle2_angle;
+      }
+
+
+
       artistsProfile.style = 
         "width: "+containerWidth+"em;"+
-        "height: "+containerHeight+"em;"      
+        "height: "+containerHeight+"em;"   
+      
     }
 
     function getArtists() {

@@ -50,13 +50,13 @@
             </div>
           </div>
           <footer class="absolute bottom-10 text-green-500">
-            <a href="#">Home</a>
+            <a href="./index.html">Home</a>
             <span>|</span>
-            <a href="#">About</a>
+            <a href="./about.html">About</a>
             <span>|</span>
-            <a href="#">Privacy Policy</a>
+            <a href="./privacy_policy.html">Privacy Policy</a>
             <span>|</span>
-            <a href="#">Contact</a>
+            <a href="./contact.html">Contact</a>
           </footer>
         </div>
       </div>
@@ -64,8 +64,18 @@
         <div class="circle-container">
           <div id="artists-profile"></div>
 
-          <div class="download-btn absolute bottom-16">
-            <button id="download" class="bg-green-500 px-4 py-3 rounded-full hover:-translate-y-1 transition">Download</button>
+          <div class="features absolute bottom-16 flex justify-around">
+            <div>
+              <button id="tags" class="bg-green-500 px-4 py-3 rounded-full hover:-translate-y-1 transition">Tags</button>
+            </div>
+            <div>
+              <button id="download" class="bg-green-500 px-4 py-3 rounded-full hover:-translate-y-1 transition">Download</button>
+            </div>
+            <div class="flex px-4 py-3 bg-green-500 rounded-full hover:-translate-y-1 transition">
+              <input class="bg-green-500" type="color" id="bg-color" name="bg-color"
+                     value="#ffffff">
+              <label for="bg-color" class="ml-2">Background Color</label>
+            </div>
           </div>
         </div>
 
@@ -73,13 +83,13 @@
 
         <div class="footer-container flex justify-center">
           <footer class="absolute bottom-6 text-green-500">
-            <a href="#">Home</a>
+            <a href="./index.html">Home</a>
             <span>|</span>
-            <a href="#">About</a>
+            <a href="./about.html">About</a>
             <span>|</span>
-            <a href="#">Privacy Policy</a>
+            <a href="./privacy_policy.html">Privacy Policy</a>
             <span>|</span>
-            <a href="#">Contact</a>
+            <a href="./contact.html">Contact</a>
           </footer>
         </div>
       </div>
@@ -94,8 +104,16 @@
         <ul class="circle-1" id="circle-1">
         </ul>
 
+        <ul class="tags-1 hide">
+        </ul>
+
         <ul class="circle-2" id="circle-2">
         </ul>
+
+        <ul class="tags-2 hide">
+        </ul>
+
+        <h1 class="watermark">circlefy.heroku.com</h1>
 
       </div>
 
