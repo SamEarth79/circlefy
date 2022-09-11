@@ -35,6 +35,7 @@ var generateRandomString = function(length) {
 var stateKey = 'spotify_auth_state';
 
 var app = express();
+const port = process.env.PORT || 8888;
 
 app.use(express.static(__dirname + '/public'))
    .use(cors())
@@ -144,4 +145,4 @@ app.get('/refresh_token', function(req, res) {
 });
 
 console.log('Listening on 8888');
-app.listen(8888);
+app.listen(port);
