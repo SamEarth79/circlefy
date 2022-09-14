@@ -2,7 +2,9 @@
 <html>
   <head>
     <title>circlefy</title>
-    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
       #login,
       #loggedin {
@@ -15,8 +17,8 @@
         width: 500px;
       }
     </style>
-    <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="./output.css" />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
 
   <body>
@@ -28,7 +30,7 @@
           <div class="hero flex flex-col h-screen items-center justify-center">
             <div class="logo">
               <div class="desktop">
-                <h1 class="circlefy-desktop italic text-center">circlefy</h1>
+                <h1 class="circlefy-desktop text-center">circlefy</h1>
               </div>
               <div class="mobile mobile-circlefy">
                 <h1 class="circlefy italic text-center">circlefy</h1>
@@ -64,14 +66,16 @@
         <div class="circle-container">
           <div id="artists-profile"></div>
 
-          <div class="features absolute bottom-16 flex justify-around">
-            <div>
-              <button id="tags" class="bg-green-500 px-4 py-3 rounded-full hover:-translate-y-1 transition">Tags</button>
+          <div class="features absolute bottom-16 flex justify-around items-center">
+            <div class="feature-row pb-4 w-3/4 flex justify-around">
+              <div class="feature">
+                <button id="tags" class="bg-green-500 px-4 py-3 rounded-full lg:hover:-translate-y-1 lg:transition">Tags</button>
+              </div>
+              <div class="feature">
+                <button id="download" class="bg-green-500 px-4 py-3 rounded-full lg:hover:-translate-y-1 lg:transition">Download</button>
+              </div>
             </div>
-            <div>
-              <button id="download" class="bg-green-500 px-4 py-3 rounded-full hover:-translate-y-1 transition">Download</button>
-            </div>
-            <div class="flex px-4 py-3 bg-green-500 rounded-full hover:-translate-y-1 transition">
+            <div class="feature bgcolorpicker w-max flex justify-center items-center px-4 py-3 bg-green-500 rounded-full lg:hover:-translate-y-1 lg:transition">
               <input class="bg-green-500" type="color" id="bg-color" name="bg-color"
                      value="#ffffff">
               <label for="bg-color" class="ml-2">Background Color</label>
@@ -113,7 +117,7 @@
         <ul class="tags-2 hide">
         </ul>
 
-        <h1 class="watermark">circlefy.heroku.com</h1>
+        <h1 class="watermark">circlefy.herokuapp.com</h1>
 
       </div>
 

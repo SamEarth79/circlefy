@@ -593,21 +593,16 @@ video {
   position: relative;
 }
 
+.bottom-6 {
+  bottom: 1.5rem;
+}
+
 .bottom-10 {
   bottom: 2.5rem;
 }
 
 .bottom-16 {
   bottom: 4rem;
-}
-
-.bottom-6 {
-  bottom: 1.5rem;
-}
-
-.my-10 {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
 }
 
 .my-2 {
@@ -629,14 +624,6 @@ video {
   margin-left: 0.5rem;
 }
 
-.mt-10 {
-  margin-top: 2.5rem;
-}
-
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-
 .inline {
   display: inline;
 }
@@ -653,16 +640,14 @@ video {
   height: 100vh;
 }
 
-.w-2\/3 {
-  width: 66.666667%;
-}
-
 .w-3\/4 {
   width: 75%;
 }
 
-.w-1\/2 {
-  width: 50%;
+.w-max {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .max-w-screen-2xl {
@@ -707,6 +692,16 @@ video {
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }
 
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -717,23 +712,9 @@ video {
   padding-bottom: 0.75rem;
 }
 
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-.py-10 {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
-}
-
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-}
-
-.pb-4 {
-  padding-bottom: 1rem;
 }
 
 .pb-8 {
@@ -752,26 +733,17 @@ video {
   padding-bottom: 2.5rem;
 }
 
-.pb-5 {
-  padding-bottom: 1.25rem;
+.pb-4 {
+  padding-bottom: 1rem;
 }
 
 .text-center {
   text-align: center;
 }
 
-.align-middle {
-  vertical-align: middle;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
-.text-9xl {
-  font-size: 8rem;
-  line-height: 1;
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .text-7xl {
@@ -779,14 +751,9 @@ video {
   line-height: 1;
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .font-bold {
@@ -915,7 +882,7 @@ video {
 
 *{
   z-index: 10;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 @supports (-webkit-text-stroke: 1px black) {
@@ -1066,7 +1033,8 @@ video {
   bottom: 0;
   color: white;
   -webkit-text-stroke: 1px black;
-  margin: 0 5px;
+  margin: 0 10px;
+  margin-bottom: 8px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -1079,11 +1047,26 @@ video {
     width: 90%;
     bottom: 5rem;
   }
-}
 
-.hover\:-translate-y-1:hover {
-  --tw-translate-y: -0.25rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  .watermark{
+    font-size: 8px;
+    font-weight: 100;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* right: 0; */
+    /* bottom: 0; */
+    color: white;
+    /* -webkit-text-stroke: 1px black; */
+    margin: 0 4px;
+    margin-bottom: 6px;
+  }
+
+  .features{
+    flex-direction: column;
+    /* width: 70%; */
+    /* align-items: center; */
+  }
 }
 
 .hover\:cursor-pointer:hover {
@@ -1096,10 +1079,6 @@ video {
 }
 
 @media (min-width: 640px) {
-  .sm\:w-3\/4 {
-    width: 75%;
-  }
-
   .sm\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -1107,8 +1086,16 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:text-sm {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+  .lg\:transition {
+    transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  .lg\:hover\:-translate-y-1:hover {
+    --tw-translate-y: -0.25rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 }
