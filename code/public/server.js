@@ -23,8 +23,8 @@
 
     function updateFirst(event) {
       let container = document.getElementById("artists-profile");
-      let containerWidth = isMobile.matches ? "20" : "34";
-      let containerHeight = isMobile.matches ? "20" : "34";
+      let containerWidth = isMobile.matches ? "24" : "34";
+      let containerHeight = isMobile.matches ? "24" : "34";
 
       if (container) {
         container.style ="background-color :"+event.target.value+";"
@@ -35,8 +35,8 @@
 
     function watchColorPicker(event) {
       let container = document.getElementById("artists-profile");
-      let containerWidth = isMobile.matches ? "20" : "34";
-      let containerHeight = isMobile.matches ? "20" : "34";
+      let containerWidth = isMobile.matches ? "24" : "34";
+      let containerHeight = isMobile.matches ? "24" : "34";
 
       if(container){
       container.style ="background-color :"+event.target.value+";"
@@ -109,11 +109,11 @@
           useCORS: true,
       }).then(canvas => {
           document.body.appendChild(canvas)
-          var dataURL = canvas.toDataURL("image/jpeg");
+          var dataURL = canvas.toDataURL("image/png");
           console.log(dataURL)
           var link = document.createElement("a");
           link.href = dataURL;
-          link.download = `${fileName}.jpeg`;
+          link.download = `${fileName}.png`;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
@@ -124,23 +124,23 @@
     function setCircleStyles(artistsProfile, response){
 
       let centre, circle1, circle2;
-      const centre_size = isMobile.matches ? 4 : 8;
+      const centre_size = isMobile.matches ? 6 : 8;
 
       const circle1_count = 8;
-      const circle1_size = isMobile.matches ? 55 : 80;
-      const circle1_radius = isMobile.matches ? "5em" : "8em";
+      const circle1_size = isMobile.matches ? 62 : 80;
+      const circle1_radius = isMobile.matches ? "6em" : "8em";
       let circle1_rot = 290;
       const circle1_angle = 360/circle1_count;
       
       const circle2_count = isMobile.matches ? 16 : 18;
-      const circle2_size = isMobile.matches ? 48 : 70;
-      const circle2_radius = isMobile.matches ? "8.5em" : "13.5em";
+      const circle2_size = isMobile.matches ? 52 : 70;
+      const circle2_radius = isMobile.matches ? "10em" : "13.5em";
       let circle2_rot = 100;
       const circle2_angle = 360/circle2_count;
       
       //Another instance of the below code is in UpdateFirst and WatchColorPicker functions 
-      let containerWidth = isMobile.matches ? "20" : "34";
-      let containerHeight = isMobile.matches ? "20" : "34";
+      let containerWidth = isMobile.matches ? "24" : "34";
+      let containerHeight = isMobile.matches ? "24" : "34";
 
       centre = document.querySelector(".centre-image");
       centre.style = 
@@ -202,8 +202,8 @@
       }
       
       tag1_rot=290;
-      tag_size = isMobile.matches ? "8" : "12";
-      tag1_radius=isMobile.matches ? "10em" : "11em";
+      tag_size = isMobile.matches ? "9" : "12";
+      tag1_radius=isMobile.matches ? "10.5em" : "11em";
       for(let i=0; i<circle1_tags.children.length; i++)
       {
         let tag = circle1_tags.children[i];
@@ -271,7 +271,7 @@
       }
       
       tag2_rot=100;
-      tag2_radius=isMobile.matches ? "17em" : "17.5em";
+      tag2_radius=isMobile.matches ? "17.4em" : "17.5em";
       for(let i=0; i<circle2_tags.children.length; i++)
       {
         let tag = circle2_tags.children[i];

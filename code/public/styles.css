@@ -184,7 +184,8 @@
 .circle-container{
     display: flex;
     flex-direction: column;
-    position: block;
+    position: relative;
+    bottom: 2em;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -195,6 +196,7 @@
 #artists-profile{
     background-color: white;
     position: relative;
+    bottom: 3em;
     /* background-color: #d98181; */
     /* width: 60%;
     height: 60%; */
@@ -266,8 +268,9 @@
     }
     
     .watermark{
-        font-size: 8px;
-        font-weight: 100;
+        font-size: 12px;
+        font-weight: 500;
+        -webkit-text-stroke: 0.03em black;
         position: absolute;
         left: 0;
         top: 0;
