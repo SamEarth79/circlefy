@@ -1,136 +1,189 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>circlefy</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css">
-      #login,
-      #loggedin {
-        display: none;
-      }
-      .text-overflow {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        width: 500px;
-      }
-    </style>
-    <link rel="stylesheet" href="./output.css" />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
+	<head>
+		<title>circlefy</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style type="text/css">
+			#login,
+			#loggedin {
+				display: none;
+			}
+			.text-overflow {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				width: 500px;
+			}
+		</style>
+		<link rel="stylesheet" href="./output.css" />
+		<link rel="stylesheet" href="./styles.css" />
+	</head>
 
-  <body>
-    <div
-      class="container max-w-screen-2xl h-screen bg-gradient-to-b-css from-slate-700-css to-slate-900-css"
-    >
-      <div id="login">
-        <div class="login-body flex flex-col items-center">
-          <div class="hero flex flex-col h-screen items-center justify-center">
-            <div class="logo">
-              <div class="desktop">
-                <h1 class="circlefy-desktop text-center">circlefy</h1>
-              </div>
-              <div class="mobile mobile-circlefy">
-                <h1 class="circlefy italic text-center">circlefy</h1>
-                <h1 class="circlefy italic text-center">circlefy</h1>
-                <h1 class="circlefy italic text-center">circlefy</h1>
-                <h1 class="circlefy italic text-center">circlefy</h1>
-                <h1 class="circlefy italic text-center">circlefy</h1>
-                <h1 class="circlefy italic text-center">circlefy</h1>
-                <h1 class="circlefy italic text-center">circlefy</h1>
-                <h1 class="circlefy italic text-center">circlefy</h1>
-                <h1 class="circlefy italic text-center">circlefy</h1>
-                <h1 class="circlefy italic text-center">circlefy</h1>
-              </div>
-            </div>
-            <!-- <a href="/login">
+	<body>
+		<div
+			class="container max-w-screen-2xl h-screen bg-gradient-to-b-css from-slate-700-css to-slate-900-css"
+		>
+			<div id="login">
+				<div class="login-body flex flex-col items-center">
+					<div
+						class="hero flex flex-col h-screen items-center justify-center"
+					>
+						<div class="logo">
+							<div class="desktop">
+								<h1 class="circlefy-desktop text-center">
+									circlefy
+								</h1>
+							</div>
+							<div class="mobile mobile-circlefy">
+								<h1 class="circlefy italic text-center">
+									circlefy
+								</h1>
+								<h1 class="circlefy italic text-center">
+									circlefy
+								</h1>
+								<h1 class="circlefy italic text-center">
+									circlefy
+								</h1>
+								<h1 class="circlefy italic text-center">
+									circlefy
+								</h1>
+								<h1 class="circlefy italic text-center">
+									circlefy
+								</h1>
+								<h1 class="circlefy italic text-center">
+									circlefy
+								</h1>
+								<h1 class="circlefy italic text-center">
+									circlefy
+								</h1>
+								<h1 class="circlefy italic text-center">
+									circlefy
+								</h1>
+								<h1 class="circlefy italic text-center">
+									circlefy
+								</h1>
+								<h1 class="circlefy italic text-center">
+									circlefy
+								</h1>
+							</div>
+						</div>
+						<!-- <a href="/login">
               <div class="generate border border-green-500 hover:cursor-pointer hover:bg-green-500 transition duration-200 text-center flex justify-center items-center">
                 <a href="/login"><h2 class="text-white text-2xl">Generate</h2></a>
               </div>
             </a> -->
-            <a href="/login" class="gen border border-green-500 hover:bg-green-500">
-              <h2 class="flex align-middle justify-center text-white">Generate</h2>
-            </a>
-          </div>
-          <footer class="absolute bottom-10 text-green-500">
-            <a href="./index.html">Home</a>
-            <span>|</span>
-            <a href="./about.html">About</a>
-            <span>|</span>
-            <a href="./privacy_policy.html">Privacy Policy</a>
-            <span>|</span>
-            <a href="./contact.html">Contact</a>
-          </footer>
-        </div>
-      </div>
-      <div id="loggedin">
-        <div class="circle-container">
-          <div id="artists-profile"></div>
+						<a
+							href="/login"
+							class="gen border border-green-500 hover:bg-green-500"
+						>
+							<h2
+								class="flex align-middle justify-center text-white"
+							>
+								Generate
+							</h2>
+						</a>
+					</div>
+					<footer class="absolute bottom-10 text-green-500">
+						<a href="./index.html">Home</a>
+						<span>|</span>
+						<a href="./about.html">About</a>
+						<span>|</span>
+						<a href="./privacy_policy.html">Privacy Policy</a>
+						<span>|</span>
+						<a href="./contact.html">Contact</a>
+					</footer>
+				</div>
+			</div>
+			<div id="loggedin">
+				<div class="circle-container">
+					<div id="artists-profile"></div>
 
-          <div class="features absolute bottom-16 flex justify-around items-center">
-            <div class="feature-row pb-4 w-3/4 flex justify-around">
-              <div class="feature">
-                <button id="tags" class="bg-green-500 px-4 py-3 rounded-full lg:hover:-translate-y-1 lg:transition">Tags</button>
-              </div>
-              <div class="feature">
-                <button id="download" class="bg-green-500 px-4 py-3 rounded-full lg:hover:-translate-y-1 lg:transition">Download</button>
-              </div>
-            </div>
-            <div class="feature bgcolorpicker w-max flex justify-center items-center px-4 py-3 bg-green-500 rounded-full lg:hover:-translate-y-1 lg:transition">
-              <input class="bg-green-500" type="color" id="bg-color" name="bg-color"
-                     value="#ffffff">
-              <label for="bg-color" class="ml-2">Background Color</label>
-            </div>
-          </div>
-        </div>
+					<div
+						class="features absolute bottom-16 flex justify-around items-center"
+					>
+						<div class="feature-row pb-4 w-3/4 flex justify-around">
+							<div class="feature">
+								<button
+									id="tags"
+									class="bg-green-500 px-4 py-3 rounded-full lg:hover:-translate-y-1 lg:transition"
+								>
+									Tags
+								</button>
+							</div>
+							<div class="feature">
+								<button
+									id="download"
+									class="bg-green-500 px-4 py-3 rounded-full lg:hover:-translate-y-1 lg:transition"
+								>
+									Download
+								</button>
+							</div>
+						</div>
+						<div
+							class="feature bgcolorpicker w-max flex justify-center items-center px-4 py-3 bg-green-500 rounded-full lg:hover:-translate-y-1 lg:transition"
+						>
+							<input
+								class="bg-green-500"
+								type="color"
+								id="bg-color"
+								name="bg-color"
+								value="#ffffff"
+							/>
+							<label for="bg-color" class="ml-2"
+								>Background Color</label
+							>
+						</div>
+					</div>
+				</div>
 
-        
+				<div class="footer-container flex justify-center">
+					<footer class="absolute bottom-6 text-green-500">
+						<a href="./index.html">Home</a>
+						<span>|</span>
+						<a href="./about.html">About</a>
+						<span>|</span>
+						<a href="./privacy_policy.html">Privacy Policy</a>
+						<span>|</span>
+						<a href="./contact.html">Contact</a>
+						<span>|</span>
+						<a id="logout">Log out</a>
+					</footer>
+				</div>
+			</div>
+		</div>
 
-        <div class="footer-container flex justify-center">
-          <footer class="absolute bottom-6 text-green-500">
-            <a href="./index.html">Home</a>
-            <span>|</span>
-            <a href="./about.html">About</a>
-            <span>|</span>
-            <a href="./privacy_policy.html">Privacy Policy</a>
-            <span>|</span>
-            <a href="./contact.html">Contact</a>
-          </footer>
-        </div>
-      </div>
-    </div>
+		<script id="artists-profile-template" type="text/x-handlebars-template">
+			<!-- <h1>Artists</h1> -->
+			<div class="artistContainer" id="artistContainer">
+				<img
+					class="media-object round centre-image"
+					src="{{userResponse.images.0.url}}"
+				/>
+				<!-- <h2>{{items.0.name}}</h2> -->
+				<ul class="circle-1" id="circle-1">
+				</ul>
 
+				<ul class="tags-1 hide">
+				</ul>
 
-    <script id="artists-profile-template" type="text/x-handlebars-template">
-      <!-- <h1>Artists</h1> -->
-      <div class="artistContainer" id="artistContainer">
-        <img class="media-object round centre-image" src="{{userResponse.images.0.url}}" />
-        <!-- <h2>{{items.0.name}}</h2> -->
-        <ul class="circle-1" id="circle-1">
-        </ul>
+				<ul class="circle-2" id="circle-2">
+				</ul>
 
-        <ul class="tags-1 hide">
-        </ul>
+				<ul class="tags-2 hide">
+				</ul>
 
-        <ul class="circle-2" id="circle-2">
-        </ul>
+				<h1 class="watermark">circlefy.herokuapp.com</h1>
 
-        <ul class="tags-2 hide">
-        </ul>
+			</div>
+		</script>
 
-        <h1 class="watermark">circlefy.herokuapp.com</h1>
-
-      </div>
-
-    </script>
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script src="dom-to-image.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+		<script src="dom-to-image.min.js"></script>
 		<script src="FileSaver.min.js"></script>
-    <script src="./server.js" defer></script>
-  </body>
+		<script src="./server.js" defer></script>
+	</body>
 </html>
